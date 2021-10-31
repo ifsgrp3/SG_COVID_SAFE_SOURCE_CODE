@@ -1,0 +1,7 @@
+@daily /usr/bin/python3 /home/sadm/IFS/K-anonymity-auto-Transformation/data/database_reader.py
+@daily /usr/bin/python3 /home/sadm/IFS/K-anonymity-auto-Transformation/anonymizer.py
+@daily /usr/bin/python3 /home/sadm/IFS/K-anonymity-auto-Transformation/data/database_uploader.py
+@monthly /usr/bin/python3 /home/sadm/IFS/Database-1/delete_older_health_declaration.py
+@daily  PGPASSWORD="password" /usr/lib/postgresql/13/bin/pg_dumpall -h group3-1-i.comp.nus.edu.sg -p 5435  -U postgres > /home/sadm/IFS/all.sql
+@daily /usr/bin/python3 /home/sadm/IFS/db_docker/postgres_logging/convert_sql.py
+@daily /usr/bin/python3 /home/sadm/IFS/db_docker/postgres_logging/add_logs.py
