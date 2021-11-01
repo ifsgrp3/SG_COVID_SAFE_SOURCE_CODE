@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Account Management</h4>
+                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Serial Number
+                                    </th>
+                                    <th>
+                                        NRIC
+                                    </th>
+                                    <th>
+                                        Account role
+                                    </th>
+                                    <th>
+                                        Account status
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let a of accounts; let i = index;">
+                                        <td>
+                                            {{ i + 1 }}
+                                        </td>
+                                        <td>
+                                            {{ a.nric }}
+                                        </td>
+                                        <td>
+                                            {{ a.account_role == 1? "Admin" : (a.account_role == 2)? "COVID Personnel": "Public user" }}
+                                        </td>
+                                        <td>
+                                            {{ a.account_status == "1"? "Active" : "Inactive" }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

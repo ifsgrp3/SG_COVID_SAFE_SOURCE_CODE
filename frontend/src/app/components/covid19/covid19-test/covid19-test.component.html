@@ -1,0 +1,69 @@
+<!-- <div class="m-subheader" sticky-header>
+	<div class="row">
+		<div class="col-sm-12 col-lg-6 col-xl-6">
+			<h3 class="m-subheader__title">
+				{{ 'Angular Form'  }}
+			</h3>
+		</div>
+		<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+			<button class="btn btn-primary m-btn" (click)="noSubmit()">
+				{{ 'Submit'  }}
+			</button>
+		</div>
+	</div>
+</div> -->
+
+
+<div class="main-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__body">
+			<div class="m-form__section m-form__section--first">
+				<div class="form-group m-form__group row">
+					<div class="col-12">
+						<!-- <div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+							<button class="btn btn-primary m-btn" (click)="noSubmit()">
+								{{ 'Submit'  }}
+							</button>
+						</div> -->
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label style="width: 100%;">{{ 'NRIC' }}</label>
+								<input type="text" class="form-control m-input" [(ngModel)]="nric">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label style="width: 100%;">{{ 'Test Result' }}</label>
+								<select [(ngModel)]="type">
+									<option value="0">Type 1</option>
+									<option value="1">Type 2</option>
+								</select>
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label style="width: 100%;">{{ 'Test Result' }}</label>
+								<select [(ngModel)]="result">
+									<option value="1">Positive</option>
+									<option value="0">Negative</option>
+								</select>
+							</div>
+						</div>
+						<br>
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+								<button class="btn btn-primary m-btn" (click)="noSubmit()">
+									{{ 'Submit' }}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="row m--margin-top-20">
+		<form>
+			<input type="file" id="myFile" name="filename">
+			<input type="submit" name="Upload">
+		</form>	
+	</div> -->
+</div>

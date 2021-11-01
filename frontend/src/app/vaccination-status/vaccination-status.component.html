@@ -1,0 +1,92 @@
+<!-- <div class="m-subheader" sticky-header>
+	<div class="row">
+		<div class="col-sm-12 col-lg-6 col-xl-6">
+			<h3 class="m-subheader__title">
+				{{ 'Angular Form'  }}
+			</h3>
+		</div>
+		<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+			<button class="btn btn-primary m-btn" (click)="noSubmit()">
+				{{ 'Submit'  }}
+			</button>
+		</div>
+	</div>
+</div> -->
+
+
+<div class="main-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__body">
+			<div class="m-form__section m-form__section--first">
+				<div class="form-group m-form__group row">
+					<div class="col-12">
+						<!-- <div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+							<button class="btn btn-primary m-btn" (click)="noSubmit()">
+								{{ 'Submit'  }}
+							</button>
+						</div> -->
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'NRIC of user'  }}</label>
+								<input class="form-control m-input" [(ngModel)]="data.nric" />
+								<span class="form-control-feedback" >
+									{{ 'This field is required'  }}
+								</span>
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label style="width: 100%">{{ 'Type of vaccine' }}</label>
+								<select name="vaccine" id="vaccine" style="width: 50%;" [(ngModel)]="data.vaccine_type">
+                                    <option value="pfizer">Pfizer</option>
+                                    <option value="moderna">Moderna</option>
+                                    <option value="sinovac">Sinovac</option>
+                                </select>
+							</div>
+						</div>
+                        <!-- <div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'First dose'  }}</label>
+								<input type="checkbox" id="dose1" name="dose1" value="1">
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Second dose' }}</label>
+								<input type="checkbox" id="dose2" name="dose2" value="1">
+							</div>
+						</div> -->
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Date of first dose (YYYY-MM-DD)'  }}</label>
+								<input class="form-control m-input" [(ngModel)]="data.first_dose_date" />
+								<span class="form-control-feedback" >
+									{{ 'This field is required'  }}
+								</span>
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Date of second dose (YYYY-MM-DD)' }}</label>
+								<input class="form-control m-input" [(ngModel)]="data.second_dose_date"/>
+								<span class="form-control-feedback" >
+									{{ 'This field is required'  }}
+								</span>
+							</div>
+						</div>
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Location of vaccine'  }}</label>
+								<input class="form-control m-input" [(ngModel)]="data.vaccination_centre_location" />
+								<span class="form-control-feedback" >
+									{{ 'This field is required'  }}
+								</span>
+							</div>
+						</div>
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+								<button class="btn btn-primary m-btn" (click)="onSubmit()">
+									{{ 'Submit' }}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

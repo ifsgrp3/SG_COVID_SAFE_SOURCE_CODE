@@ -1,0 +1,27 @@
+<div class="center">
+    <h1>Log In</h1>
+</div>
+<form #loginForm='ngForm' (ngSubmit)='login(loginForm)'>
+    <mat-form-field>
+        <input matInput placeholder="NRIC" required #nric='ngModel' name='nric'
+            [(ngModel)]='loginData.nric'>
+        <mat-error *ngIf="nric.invalid && (nric.dirty || nric.touched)">
+            <div *ngIf="nric.errors.required">
+                Username is required.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Password" type='password' required #password='ngModel' name='password'
+            [(ngModel)]='loginData.password'>
+        <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.errors.required">
+                Password is required.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button type='submit'>Log In</button>
+    <!-- <a mat-raised-button routerLink='/passwordResetRequest'>Reset Password</a> -->
+</form>

@@ -1,0 +1,141 @@
+<div class="main-content">
+    <p style="text-align: center;">What would you like to know?</p>
+    <br>
+    <div style="padding-left: 20px;" class="row">
+        <p>I want to find out</p>
+        <div class="col">
+            <select name="data" id="data" [(ngModel)]="option">
+                <option value="rate">Vaccination Rate</option>
+                <option value="cases">Covid-19 Cases</option>
+            </select>
+        </div>
+    </div>
+    <div style="padding-left: 20px;" class="row">
+        <p>Please select the following filters</p>
+    </div>
+    <div class="row">
+        <div style="text-align: center;" class="col">
+            <p>Location: </p>
+            <select name="location" id="location" [(ngModel)]="data.area" style="width: 10%;">
+                <option value="central">Central</option>
+                <option value="north">North</option>
+                <option value="west">West</option>
+                <option value="east">East</option>
+                <option value="south">South</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div style="text-align: center; padding-top: 20px;" class="col">
+            <p>Gender: </p>
+            <select name="gender" id="gender" [(ngModel)]="data.gender" style="width: 10%;">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div style="text-align: center; padding-top: 20px;" class="col">
+            <p>Age: </p>
+            <select name="age" id="age" [(ngModel)]="data.age" style="width: 10%;">
+                <option value="21-30">21-30</option>
+                <option value="31-40">31-40</option>
+                <option value="41-50">41-50</option>
+                <option value="51-60">51-60</option>
+                <option value="61-70">61-70</option>
+            </select>
+        </div>
+    </div>
+    <div class="row m--margin-top-20">
+        <div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+            <button class="btn btn-primary m-btn" (click)="retrieve()">
+                {{ 'Submit' }}
+            </button>
+        </div>
+    </div>
+    <br>
+    <div class="row" *ngIf="option == 'rate' && percentage">
+        <p style="padding-left: 20px;">Vaccination rate with this filter is {{ percentage }} %</p>
+    </div> 
+    <div class="row" *ngIf="option == 'cases' && cases">
+        <p style="padding-left: 20px;">COVID-19 Cases with this filter is {{ cases}} cases</p>
+    </div> 
+    <div class="row" style="padding-left: 20px;">
+        <p>The accuracy of this data set is as follows:</p>
+    </div>
+    <div class="row" style="padding-left: 20px;">
+        <ul>
+            <li>K anonymity = 5</li>
+            <li>NCP = 9.51%</li>
+        </ul>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title ">Health Record History</h4>
+            <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Age
+                        </th>
+                        <th>
+                            Test result
+                        </th>
+                        <th>
+                            Gender
+                        </th>
+                        <th>
+                            Vaccination Status
+                        </th>
+                        <th>
+                            Area
+                        </th>
+                        <th>
+                            Race
+                        </th>
+                        <th>
+                            Vaccine type
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let s of stats | paginate: { itemsPerPage: 20, currentPage: p }; let i = index">
+                            <td>
+                                {{ i + 1}}
+                            </td>
+                            <td>
+                               {{ s.age }}
+                            </td>
+                            <td>
+                                {{ s.test_result }}
+                            </td>
+                            <td>
+                                {{ s.gender }}
+                            </td>
+                            <td>
+                                {{ s.vaccination_status }}
+                            </td>
+                            <td>
+                                {{ s.area }}
+                            </td>
+                            <td>
+                                {{ s.race }}
+                            </td>
+                            <td>
+                                {{ s.vaccine_type }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+<!-- <div class="m-subheader" sticky-header>
+	<div class="row">
+		<div class="col-sm-12 col-lg-6 col-xl-6">
+			<h3 class="m-subheader__title">
+				{{ 'Angular Form'  }}
+			</h3>
+		</div>
+		<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+			<button class="btn btn-primary m-btn" (click)="noSubmit()">
+				{{ 'Submit'  }}
+			</button>
+		</div>
+	</div>
+</div> -->
+
+
+<div class="main-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__body">
+			<form [formGroup]="form">
+			<div class="m-form__section m-form__section--first">
+				<div class="form-group m-form__group row">
+					<div class="col-12">
+						<!-- <div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+							<button class="btn btn-primary m-btn" (click)="noSubmit()">
+								{{ 'Submit'  }}
+							</button>
+						</div> -->
+						<h3>Populate user information</h3>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'NRIC'  }}</label>
+								<input class="form-control m-input" formControlName="nric" />
+							</div>
+							<!-- <div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Last Name' }}</label>
+								<input class="form-control m-input" formControlName="last_name" />
+								<span class="form-control-feedback" >
+									{{ 'This field is required'  }}
+								</span>
+							</div> -->
+						</div>
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+								<button class="btn btn-primary m-btn" (click)="retrieveUser()">
+									{{ 'Retrieve' }}
+								</button>
+							</div>
+						</div>
+						<br>
+						<h3>Change Password</h3>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'New password'  }}</label>
+								<input class="form-control m-input" type="password" formControlName="password" />
+							</div>
+						</div>
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+								<button class="btn btn-primary m-btn" (click)="updatePassword()">
+									{{ 'Update' }}
+								</button>
+							</div>
+						</div>
+						<br>
+						<h3>Change Credentials Information</h3>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label style="width: 100%;">{{ 'User Role'  }}</label>
+								<select style="width: 35%;" name="vaccination" id="vaccination" [(ngModel)]="account_role">
+									<option value="1">Admin</option>
+									<option value="2">COVID-19 Personnel</option>
+									<option value="3">Public user</option>
+								</select>
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'BLE Serial Number'  }}</label>
+								<input class="form-control m-input" formControlName="ble_serial_number" />
+							</div>
+						</div>
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+								<button class="btn btn-primary m-btn" (click)="updateCredentials()">
+									{{ 'Update' }}
+								</button>
+							</div>
+						</div>
+						<br>
+						<h3>Change Users Information</h3>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'First name'  }}</label>
+								<input class="form-control m-input" formControlName="first_name" />
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Last Name'  }}</label>
+								<input class="form-control m-input" formControlName="last_name" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Contact number'  }}</label>
+								<input class="form-control m-input" formControlName="contact_number" />
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Street Name'  }}</label>
+								<input class="form-control m-input" formControlName="street_name" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Unit number'  }}</label>
+								<input class="form-control m-input" formControlName="unit_number" />
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Zip Code'  }}</label>
+								<input class="form-control m-input" formControlName="zip_code" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Area'  }}</label>
+								<input class="form-control m-input" formControlName="area" />
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label style="width: 100%;">{{ 'Vaccination status'  }}</label>
+								<select style="width: 35%;" name="vaccination" id="vaccination" [(ngModel)]="vaccination">
+									<option value="0">Not vaccinated</option>
+									<option value="1">Partially vaccinated</option>
+									<option value="2">Fully vaccinated</option>
+								</select>
+							</div>
+						</div>
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+								<button class="btn btn-primary m-btn" (click)="updateInfo()">
+									{{ 'Update' }}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

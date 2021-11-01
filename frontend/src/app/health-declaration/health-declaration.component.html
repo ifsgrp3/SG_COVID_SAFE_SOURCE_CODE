@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__body">
+			<div class="m-form__section m-form__section--first">
+				<div class="form-group m-form__group row">
+					<div class="col-12">
+						<!-- <div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+							<button class="btn btn-primary m-btn">
+								{{ 'Submit'  }}
+							</button>
+						</div> -->
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Date of declaration (YYYY-MM-DD)'  }} *</label>
+								<input class="form-control m-input" [(ngModel)]="date" />
+								<span class="form-control-feedback" >
+									{{ 'This field is required'  }}
+								</span>
+							</div>
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label style="width: 100%;">{{ 'COVID Symptoms'  }} *</label>
+									<select [(ngModel)]="symptoms" style="width: 15%;">
+										<option value="1">Yes</option>
+										<option value="0">No</option>
+									</select>
+									<!-- <input type="submit" value="Submit"> -->
+							  
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-6 col-xl-6" >
+								<label>{{ 'Temperature'  }} *</label>
+								<input class="form-control m-input" [(ngModel)]="temperature" />
+								<span class="form-control-feedback" >
+									{{ 'This field is required'  }}
+								</span>
+									<!-- <input type="submit" value="Submit"> -->
+							  
+							</div>
+						</div>
+						<div class="row m--margin-top-20">
+							<div class="col-sm-12 col-lg-6 col-xl-6 m--align-right top-sticky">
+								<button class="btn btn-primary m-btn" (click)="onSubmit()">
+									{{ 'Submit' }}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

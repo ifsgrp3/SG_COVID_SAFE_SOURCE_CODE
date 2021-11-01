@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Health Records</h4>
+                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="row" style="padding-left: 20px;">
+                            <input class="form-control m-input" type="text" placeholder="Enter NRIC..." [(ngModel)]="nric">
+                            <button class="btn btn-primary m-btn" (click)="search(nric)">
+                                {{ 'Search' }}
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Serial Number
+                                    </th>
+                                    <th>
+                                        NRIC
+                                    </th>
+                                    <th>
+                                        Health Declaration
+                                    </th>
+                                    <th>
+                                        Vaccination Status
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let r of record; let i = index;">
+                                        <td>
+                                            {{ i + 1 }}
+                                        </td>
+                                        <td>
+                                            {{ r.nric }}
+                                        </td>
+                                        <td>
+                                            Temperature: {{ r.temperature }};
+                                            Symptoms: {{ r.covid_symptoms == "1"? "Yes" : "No"}}
+                                        </td>
+                                        <td>
+                                            {{ (r.first_dose_date && r.second_dose_date)? "Fully Vaccinated" : (r.first_dose_date || r.second_dose_date)? "Partially Vaccinated" : "Not vaccinated" }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

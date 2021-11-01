@@ -1,0 +1,10 @@
+{
+    "/auth": {
+      "target": "http://group3-1-i.comp.nus.edu.sg:5436",
+      "secure": false
+    },
+    "/records": {
+      "target": "http://group3-1-i.comp.nus.edu.sg:5436",
+      "secure": false
+    }
+}

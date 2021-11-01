@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Health Record History</h4>
+                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Serial Number
+                                    </th>
+                                    <th>
+                                        NRIC
+                                    </th>
+                                    <th>
+                                        Temperature (C)
+                                    </th>
+                                    <th>
+                                        Symptoms
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let r of record; let i = index;">
+                                        <td>
+                                            {{ i + 1 }}
+                                        </td>
+                                        <td>
+                                           {{ r.nric }}
+                                        </td>
+                                        <td>
+                                            {{ r.temperature }}
+                                        </td>
+                                        <td>
+                                            {{ r.covid_symptoms === "1"? "Yes" : "No" }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
