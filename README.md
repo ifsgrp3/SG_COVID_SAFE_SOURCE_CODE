@@ -14,6 +14,7 @@
 ![image](https://user-images.githubusercontent.com/77485021/139622981-094da464-6a2e-4635-837e-39663cfad9ba.png)
 
 3) Upload arduino sketch of the account that you want to test into the dongle from Dongle files
+4) For testing purposes, the MFA is disabled due to the availability of dongles.
 
 # Testing Accounts
 
