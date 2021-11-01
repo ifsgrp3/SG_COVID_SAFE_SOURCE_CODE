@@ -2,7 +2,6 @@
 #include <string.h>
 #include <Crypto.h>
 #include <AES.h>
-#include <string.h>
 #include <RNG.h>
 
 AES128 aes128;
