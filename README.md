@@ -1,10 +1,15 @@
 # SG_COVID_SAFE_SOURCE_CODE
 
-Requirements to run application:
+# Requirements to run application:
 
 1) Must be connected to SOC VPN
 2) Have a browser that run http 
 3) Must have arduino installed
+
+# Instruction to run program
+
+
+# Testing Accounts
 
 Admin:
 
