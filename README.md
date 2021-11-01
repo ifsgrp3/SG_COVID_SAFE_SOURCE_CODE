@@ -7,7 +7,7 @@
 3) Must have arduino installed
 
 # Instruction to run program
-
+1) Open a browser that is able to run http and enter this URL http://group3-1-i.comp.nus.edu.sg:5437/
 
 # Testing Accounts
 
