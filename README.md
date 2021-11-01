@@ -10,6 +10,7 @@
 1) Open a browser that is able to run http and enter this URL http://group3-1-i.comp.nus.edu.sg:5437/
 2) Upload arduino sketch of account that you want to test into the dongle
 Install the following libraries in Arduino below
+
 ![image](https://user-images.githubusercontent.com/77485021/139623028-125339f1-2b65-4c43-a975-e110d0e81031.png)
 ![image](https://user-images.githubusercontent.com/77485021/139622981-094da464-6a2e-4635-837e-39663cfad9ba.png)
 
