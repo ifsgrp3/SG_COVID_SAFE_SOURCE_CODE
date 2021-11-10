@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'app/data.service';
 import * as bcrypt from 'bcryptjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-registration',
@@ -38,6 +39,10 @@ export class UserRegistrationComponent implements OnInit {
 
   onSubmit() {
     this.form.value.gender = (this.form.value.gender == "Male")? "0" : "1"
+    this.form.value.date_of_birth = moment(this.form.value.date_of_birth).format("YYYY-MM-DD");
+    if (!parseInt(this.form.value.age)) {
+      return;
+    }
     this.dataService.recordRegister(this.form.value).subscribe((res: any) => {
       console.log(res);
     })
@@ -61,6 +66,9 @@ export class UserRegistrationComponent implements OnInit {
     this.dataService.register(registerData).subscribe((res: any) => {
       console.log(res);
     })
+    if (!parseInt(address.unit_number) || !parseInt(address.zip_code)) {
+      return;
+    }
     this.dataService.addUserAddress(address).subscribe((res: any) => {
       console.log(res);
     })

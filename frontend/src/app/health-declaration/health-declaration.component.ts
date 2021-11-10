@@ -20,6 +20,9 @@ export class HealthDeclarationComponent implements OnInit {
       covid_symptoms: this.symptoms,
       temperature: this.temperature
     }
+    if (!parseFloat(this.temperature)) {
+      return;
+    }
     this.dataService.uploadHealthDeclaration(data).subscribe((res: any) => {
       console.log(res);
     }, err => {

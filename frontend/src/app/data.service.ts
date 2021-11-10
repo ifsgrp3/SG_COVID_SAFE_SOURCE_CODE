@@ -172,4 +172,34 @@ export class DataService {
         return false;
       }
   }
+
+  isAdmin() {
+    const token = localStorage.getItem('token');
+    const decodedToken = helper.decodeToken(token);
+    if(decodedToken["account_role"] == 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isPublicUser() {
+    const token = localStorage.getItem('token');
+    const decodedToken = helper.decodeToken(token);
+    if (decodedToken["account_role"] == 3) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isCovidPersonnel() {
+    const token = localStorage.getItem('token');
+    const decodedToken = helper.decodeToken(token);
+    if (decodedToken["account_role"] == 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

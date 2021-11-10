@@ -23,6 +23,7 @@ export class MultiFactorAuthenticationComponent implements OnInit {
       localStorage.clear();
       this.router.navigate(['/login']);
     })
-    // this.router.navigate(['/']);
+      // localStorage.setItem('isLoggedIn', '1');
+      // this.router.navigate(['/']);
   }
 }

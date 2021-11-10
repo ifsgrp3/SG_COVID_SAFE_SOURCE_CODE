@@ -21,6 +21,9 @@ import { RecordLoggingComponent } from 'app/logs/record-logs/record-logs.compone
 import { VaccinationStatusComponent } from 'app/vaccination-status/vaccination-status.component';
 import { Covid19DeclarationComponent } from 'app/components/covid19/covid19-declaration/covid19-declaration.component';
 import { UpdateComponent } from 'app/components/update/update.conponent';
+import { IsPublicGuard } from 'app/is-public.guard';
+import { IsCovidPersonnelGuard } from 'app/is-cp.guard';
+import { IsAdminGuard } from 'app/is-admin.guard';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -66,24 +69,24 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
+    { path: 'user-profile',   component: UserProfileComponent, canActivate:[IsPublicGuard] },
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'covid-test',     component: Covid19TestComponent},
-    { path: 'covid-history',     component: Covid19HistoryComponent},
-    { path: 'health-declaration', component: HealthDeclarationComponent},
-    { path: 'health-record', component: HealthRecordComponent},
-    { path: 'statistics', component: StatisticsComponent},
+    { path: 'covid-test',     component: Covid19TestComponent, canActivate:[IsCovidPersonnelGuard] },
+    { path: 'covid-history',     component: Covid19HistoryComponent, canActivate:[IsPublicGuard] },
+    { path: 'health-declaration', component: HealthDeclarationComponent, canActivate:[IsPublicGuard]},
+    { path: 'health-record', component: HealthRecordComponent, canActivate:[IsPublicGuard]},
+    { path: 'statistics', component: StatisticsComponent ,canActivate:[IsPublicGuard]}, 
     { path: 'news', component: NewsComponent},
-    { path: 'accounts', component: AccountsComponent},
-    { path: 'registration', component: UserRegistrationComponent},
-    { path: 'account-logs', component: AccountLoggingComponent},
-    { path: 'record-logs', component: RecordLoggingComponent},
-    { path: 'vaccination', component: VaccinationStatusComponent},
-    { path: 'covid-declaration', component: Covid19DeclarationComponent},
-    { path: 'update', component: UpdateComponent }
+    { path: 'accounts', component: AccountsComponent, canActivate:[IsAdminGuard]},
+    { path: 'registration', component: UserRegistrationComponent, canActivate:[IsAdminGuard]},
+    { path: 'account-logs', component: AccountLoggingComponent, canActivate:[IsAdminGuard]},
+    { path: 'record-logs', component: RecordLoggingComponent, canActivate:[IsAdminGuard]},
+    { path: 'vaccination', component: VaccinationStatusComponent, canActivate:[IsCovidPersonnelGuard]},
+    { path: 'covid-declaration', component: Covid19DeclarationComponent, canActivate:[IsCovidPersonnelGuard]},
+    { path: 'update', component: UpdateComponent, canActivate:[IsAdminGuard] }
 ];
