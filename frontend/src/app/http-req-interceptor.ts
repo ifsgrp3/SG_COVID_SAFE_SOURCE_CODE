@@ -11,17 +11,19 @@ import { Observable } from 'rxjs';
 import { environment } from '../environments/environment'
 import { map, filter, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { DataService } from './data.service';
 @Injectable()
 export class HttpReqInterceptor implements HttpInterceptor {
     constructor(
-        public router: Router
+        public router: Router,
+        public dataService: DataService
     ) { }
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let modifiedReq = req.clone({});
-        if (localStorage.getItem('token')) {
+        if (sessionStorage.getItem('token')) {
             modifiedReq = modifiedReq.clone({
                 setHeaders: {
-                    authorization: localStorage.getItem('token')
+                    authorization: sessionStorage.getItem('token')
                 }
             });
         }

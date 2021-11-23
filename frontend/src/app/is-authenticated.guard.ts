@@ -16,10 +16,10 @@ export class IsAuthenticatedGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const isAuthenticated = this.dataService.isAuthenticated();
     if (!isAuthenticated) {
-      localStorage.clear();
+      sessionStorage.clear();
       this.router.navigate(['/login']);
       // this.dataService.logout().subscribe((res: any) => {
-      //   localStorage.clear();
+      //   sessionStorage.clear();
       //   this.router.navigate(['/login']);
       // })
     }

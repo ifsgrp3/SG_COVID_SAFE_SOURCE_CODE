@@ -27,7 +27,9 @@ export class LoginPageComponent implements OnInit {
           alert(res.error);
         }
         // console.log(jwtDecode(res.token))
-        localStorage.setItem('token', res.token);
+        res.token = this.dataService.encryptData(res.token);
+        sessionStorage.setItem('token', res.token);
+        // this.dataService.bake_cookie('token', res.token)
         this.router.navigate(['/mfa']);
       }, err => {
         alert('Invalid username or password');

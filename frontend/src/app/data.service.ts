@@ -5,6 +5,7 @@ import { Subject, throwError } from 'rxjs';
 import { environment } from 'environments/environment';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import * as CryptoJS from 'crypto-js';
 
 const helper = new JwtHelperService();
 
@@ -151,9 +152,35 @@ export class DataService {
   }
 
   // Check authentication
+  
+
+  // Data encryption
+  encryptData(data) {
+
+    try {
+      return CryptoJS.AES.encrypt(JSON.stringify(data), environment.JWT_KEY).toString();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  decryptData(data) {
+
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, environment.JWT_KEY);
+      if (bytes.toString()) {
+        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  // Check logged in
   isAuthenticated() {
     try {
-      const token = localStorage.getItem('token');
+      const token = this.decryptData(sessionStorage.getItem('token'));
       const decodedToken = helper.decodeToken(token);
       const isExpired = helper.isTokenExpired(token);
       return !!decodedToken && !isExpired;
@@ -163,9 +190,8 @@ export class DataService {
     }
   }
 
-  // Check logged in
   isLoggedIn() {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      const isLoggedIn = sessionStorage.getItem('isLoggedIn');
       if (isLoggedIn == '1') {
         return true;
       } else {
@@ -174,7 +200,7 @@ export class DataService {
   }
 
   isAdmin() {
-    const token = localStorage.getItem('token');
+    const token = this.decryptData(sessionStorage.getItem('token'));
     const decodedToken = helper.decodeToken(token);
     if(decodedToken["account_role"] == 1) {
       return true;
@@ -184,7 +210,7 @@ export class DataService {
   }
 
   isPublicUser() {
-    const token = localStorage.getItem('token');
+    const token = this.decryptData(sessionStorage.getItem('token'));
     const decodedToken = helper.decodeToken(token);
     if (decodedToken["account_role"] == 3) {
       return true;
@@ -194,7 +220,7 @@ export class DataService {
   }
 
   isCovidPersonnel() {
-    const token = localStorage.getItem('token');
+    const token = this.decryptData(sessionStorage.getItem('token'));
     const decodedToken = helper.decodeToken(token);
     if (decodedToken["account_role"] == 2) {
       return true;
@@ -202,4 +228,5 @@ export class DataService {
       return false;
     }
   }
+
 }

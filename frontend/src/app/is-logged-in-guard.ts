@@ -16,10 +16,10 @@ export class IsLoggedInGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const isLoggedIn = this.dataService.isLoggedIn();
     if (!isLoggedIn) {
-      localStorage.removeItem('isLoggedIn')
+      sessionStorage.removeItem('isLoggedIn')
       this.router.navigate(['/mfa']);
     //   this.dataService.logout().subscribe((res: any) => {
-    //     localStorage.clear();
+    //     sessionStorage.clear();
     //     console.log("Bye");
     //     this.router.navigate(['/login']);
     //     window.location.reload();

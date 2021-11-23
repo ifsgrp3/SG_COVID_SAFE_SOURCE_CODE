@@ -29,14 +29,14 @@
 						<div class="row">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'First Name'  }}</label>
-								<input class="form-control m-input" formControlName="first_name" />
+								<input class="form-control m-input" (keypress)="onCharsKey($event)" required formControlName="first_name" />
 								<span class="form-control-feedback" >
 									{{ 'This field is required'  }}
 								</span>
 							</div>
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Last Name' }}</label>
-								<input class="form-control m-input" formControlName="last_name" />
+								<input class="form-control m-input" (keypress)="onCharsKey($event)" required formControlName="last_name" />
 								<span class="form-control-feedback" >
 									{{ 'This field is required'  }}
 								</span>
@@ -49,23 +49,41 @@
 							</div>
 							<div class="col-sm-12 col-lg-3 col-xl-3" >
 								<label>{{ 'Unit number'  }}</label>
-								<input type="text" pattern="\d*" maxlength="2" class="form-control m-input" formControlName="unit_number" />
+								<input 
+									type="text" 
+									(keypress)="onlyNumberKey($event)"
+									maxlength="5" 
+									class="form-control m-input" 
+									formControlName="unit_number" 
+								/>
 							</div>
 							<div class="col-sm-12 col-lg-3 col-xl-3" >
-								<label>{{ 'Area (NSEWC)' }}</label>
-								<input class="form-control m-input" formControlName="area"/>
+								<label style="width: 100%;">{{ 'Area (NSEWC)' }}</label>
+								<select style="width: 30%;" name="area" id="area" formControlName="area">
+									<option value="north">north</option>
+									<option value="south">south</option>
+									<option value="east">east</option>
+									<option value="west">west</option>
+									<option value="central">central</option>
+								</select>	
 							</div>
 							<div class="col-sm-12 col-lg-3 col-xl-3" >
 								<label>{{ 'Zip Code' }}</label>
-								<input type="text" pattern="\d*" maxlength="6" class="form-control m-input" formControlName="zip_code"/>
+								<input 
+									type="text" 
+									(keypress)="onlyNumberKey($event)" 
+									maxlength="6" 
+									class="form-control m-input" 
+									formControlName="zip_code"
+								/>
 							</div>
 						</div>
 						<div class="row m--margin-top-20">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Contact Number'  }}</label>
-								<input type="text" pattern="\d*" maxlength="8" class="form-control m-input" formControlName="contact_number" />
+								<input type="text" (keypress)="onlyNumberKey($event)" maxlength="8" class="form-control m-input" formControlName="contact_number" />
 								<span class="form-control-feedback" >
-									{{ 'This field is required'  }}
+									{{ 'This field is required and must only consist of numbers'  }}
 								</span>
 							</div>
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
@@ -79,14 +97,14 @@
 						<div class="row m--margin-top-20">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Date of birth'  }}</label>
-								<input type="date" class="form-control m-input" formControlName="date_of_birth" />
+								<input type="date" max="{{ todayDate }}" class="form-control m-input" formControlName="date_of_birth" />
 								<span class="form-control-feedback" >
 									{{ 'This field is required'  }}
 								</span>
 							</div>
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Age'  }}</label>
-								<input type="text" pattern="\d*" maxlength="2" class="form-control m-input" formControlName="age" />
+								<input type="text" (keypress)="onlyNumberKey($event)" maxlength="3" class="form-control m-input" formControlName="age" />
 								<span class="form-control-feedback" >
 									{{ 'This field is required'  }}
 								</span>
@@ -95,7 +113,7 @@
 						<div class="row m--margin-top-20">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'NRIC'  }}</label>
-								<input class="form-control m-input" formControlName="nric" />
+								<input class="form-control m-input" maxlength="9" minlength="9" (keypress)="onlyValidCharsKey($event)" formControlName="nric" />
 								<span class="form-control-feedback" >
 									{{ 'This field is required'  }}
 								</span>
@@ -111,11 +129,13 @@
 						</div>
 						<div class="row m--margin-top-20">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
-								<label>{{ 'Race'  }}</label>
-								<input class="form-control m-input" formControlName="race" />
-								<span class="form-control-feedback" >
-									{{ 'This field is required'  }}
-								</span>
+								<label style="width: 100%;">{{ 'Race' }}</label>
+								<select style="width: 30%;" name="race" id="race" formControlName="race">
+									<option value="chinese">chinese</option>
+									<option value="malay">malay</option>
+									<option value="indian">indian</option>
+									<option value="others">others</option>
+								</select>
 							</div>
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'BLE Device Serial Number' }}</label>

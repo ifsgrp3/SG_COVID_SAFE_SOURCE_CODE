@@ -126,9 +126,9 @@ export class NavbarComponent implements OnInit {
     }
 
     logout() {
-        if (localStorage.getItem("token")) {
+        if (sessionStorage.getItem("token")) {
             this.dataService.logout().subscribe((res: any) => {
-                localStorage.clear();
+                sessionStorage.clear();
                 this.router.navigate(["/login"]);
             })
         }

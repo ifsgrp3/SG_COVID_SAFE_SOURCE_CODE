@@ -30,7 +30,7 @@
 						<div class="row">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'NRIC'  }}</label>
-								<input class="form-control m-input" formControlName="nric" />
+								<input class="form-control m-input" maxlength="9" minlength="9" (keypress)="onlyValidCharsKey($event)" formControlName="nric" />
 							</div>
 							<!-- <div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Last Name' }}</label>
@@ -67,7 +67,7 @@
 						<div class="row">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label style="width: 100%;">{{ 'User Role'  }}</label>
-								<select style="width: 35%;" name="vaccination" id="vaccination" [(ngModel)]="account_role">
+								<select style="width: 35%;" name="account_role" id="account_role" formControlName="account_role">
 									<option value="1">Admin</option>
 									<option value="2">COVID-19 Personnel</option>
 									<option value="3">Public user</option>
@@ -90,17 +90,17 @@
 						<div class="row">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'First name'  }}</label>
-								<input class="form-control m-input" formControlName="first_name" />
+								<input class="form-control m-input" (keypress)="onCharsKey($event)" required formControlName="first_name" />
 							</div>
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Last Name'  }}</label>
-								<input class="form-control m-input" formControlName="last_name" />
+								<input class="form-control m-input" (keypress)="onCharsKey($event)" required formControlName="last_name" />
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Contact number'  }}</label>
-								<input class="form-control m-input" formControlName="contact_number" />
+								<input type="text" (keypress)="onlyNumberKey($event)" maxlength="8" class="form-control m-input" formControlName="contact_number" />
 							</div>
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Street Name'  }}</label>
@@ -110,21 +110,39 @@
 						<div class="row">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Unit number'  }}</label>
-								<input class="form-control m-input" formControlName="unit_number" />
+								<input 
+									type="text" 
+									(keypress)="onlyNumberKey($event)"
+									maxlength="5" 
+									class="form-control m-input" 
+									formControlName="unit_number" 
+								/>
 							</div>
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label>{{ 'Zip Code'  }}</label>
-								<input class="form-control m-input" formControlName="zip_code" />
+								<input 
+									type="text" 
+									(keypress)="onlyNumberKey($event)" 
+									maxlength="6" 
+									class="form-control m-input" 
+									formControlName="zip_code"
+								/>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
-								<label>{{ 'Area'  }}</label>
-								<input class="form-control m-input" formControlName="area" />
+								<label style="width: 100%;">{{ 'Area'  }}</label>
+								<select style="width: 30%;" name="area" id="area" formControlName="area">
+									<option value="north">north</option>
+									<option value="south">south</option>
+									<option value="east">east</option>
+									<option value="west">west</option>
+									<option value="central">central</option>
+								</select>	
 							</div>
 							<div class="col-sm-12 col-lg-6 col-xl-6" >
 								<label style="width: 100%;">{{ 'Vaccination status'  }}</label>
-								<select style="width: 35%;" name="vaccination" id="vaccination" [(ngModel)]="vaccination">
+								<select style="width: 35%;" name="vaccination" id="vaccination" formControlName="vaccination">
 									<option value="0">Not vaccinated</option>
 									<option value="1">Partially vaccinated</option>
 									<option value="2">Fully vaccinated</option>
