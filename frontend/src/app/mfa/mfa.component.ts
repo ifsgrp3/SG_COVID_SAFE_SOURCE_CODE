@@ -16,14 +16,14 @@ export class MultiFactorAuthenticationComponent implements OnInit {
   }
 
   authenticate() {
-    // this.dataService.mfa().subscribe((res: any) => {
-    //   sessionStorage.setItem('isLoggedIn', '1');
-    //   this.router.navigate(['/']);
-    // }, err => {
-    //   sessionStorage.clear();
-    //   this.router.navigate(['/login']);
-    // })
+    this.dataService.mfa().subscribe((res: any) => {
       sessionStorage.setItem('isLoggedIn', '1');
       this.router.navigate(['/']);
+    }, err => {
+      sessionStorage.clear();
+      this.router.navigate(['/login']);
+    })
+      // sessionStorage.setItem('isLoggedIn', '1');
+      // this.router.navigate(['/']);
   }
 }
